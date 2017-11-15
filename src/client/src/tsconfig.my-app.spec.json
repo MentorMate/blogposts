@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "build/my-app/spec",
+    "baseUrl": "./my-app",
+    "module": "commonjs",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "node"
+    ]
+  },
+  "files": [
+    "/my-app/test.ts"
+  ],
+  "include": [
+    "./my-app/**/*.spec.ts",
+    "./my-app/**/*.d.ts"
+  ]
+}

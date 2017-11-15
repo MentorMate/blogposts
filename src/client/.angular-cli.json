@@ -1,0 +1,75 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "financial-wellness-web"
+  },
+  "apps": [
+    {
+      "name": "my-app",
+      "root": "src/my-app",
+      "assets": [
+        "./assets"        
+      ],
+      "index": "./index.html",
+      "main": "./main.ts",
+      "polyfills": "./polyfills.ts",
+      "test": "./test.ts",
+      "tsconfig": "../tsconfig.my-app.json",
+      "testTsconfig": "../tsconfig.my-app.spec.json",
+      "prefix": "fw",
+      "styles": [
+        "./assets/scss/styles.scss"
+      ],
+      "stylePreprocessorOptions": {
+        "includePaths": [
+          "./assets"
+        ]
+      },
+      "scripts": [],
+      "environmentSource": "./environments/environment.ts",
+      "environments": {
+        "dev": "./environments/environment.ts",
+        "prod": "./environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.fw-app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.fw-admin.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.fw-app.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "src/tsconfig.fw-admin.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "serve": {
+      "port": 4200
+    },
+    "component": {}
+  }
+}

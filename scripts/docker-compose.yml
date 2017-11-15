@@ -1,0 +1,29 @@
+version: '3'
+
+services:   
+  run-db:
+    image: microsoft/mssql-server-linux:latest
+    container_name: myapp.dev.db
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_PID=Express
+      - SA_PASSWORD=this1sMyAppSecretPassw0rd
+    ports:
+      - "1433:1433"
+    expose:
+      - 1433
+
+  run-api:
+    image: myapp-api
+    container_name: myapp.dev.api
+    build:
+      context: ../src/server/MyApp.Api
+      dockerfile: Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8080:80"
+    depends_on:
+      - run-db
+    links:
+      - run-db:db

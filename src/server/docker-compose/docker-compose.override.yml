@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  run-api:
+    build:
+      context: ./../MyApp.Api

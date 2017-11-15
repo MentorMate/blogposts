@@ -1,0 +1,33 @@
+version: '3'
+
+services: 
+  myapp-builder:
+    image: myapp-builder
+    container_name: myapp-builder
+    build:
+      context: ./builder
+      dockerfile: Dockerfile
+    volumes: ["../src:/app"]
+  
+  build-api:
+    image: myapp-builder
+    container_name: myapp-build-api
+    volumes: ["../src:/app", "./builder:/scripts"]
+    command: build-api
+    depends_on: ["myapp-builder"]
+
+  build-web:
+    image: myapp-builder
+    container_name: myapp-build-web
+    volumes: ["../src:/app", "./builder:/scripts"]
+    command: build-web
+    depends_on: ["myapp-builder"]
+
+  run-web:
+    image: myapp-web
+    container_name: myapp.dev.web
+    build:
+      context: ../src/client
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"

@@ -1,0 +1,62 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "taskName": "restore",
+      "type": "shell",
+      "command": "yarn install --production=false"
+    },
+    {
+      "taskName": "debug-web",
+      "type": "shell",
+      "command": "docker-compose run --rm --name myapp-debug-web -p 4200:4200 myapp-builder debug-web",
+      "options": {
+        "cwd": "${workspaceFolder}/../../scripts/"
+      }
+    },
+    {
+      "taskName": "build-api",
+      "type": "shell",
+      "command": "docker-compose up build-api",
+      "options": {
+        "cwd": "${workspaceFolder}/../../scripts/"
+      }
+    },
+    {
+      "taskName": "build-web",
+      "type": "shell",
+      "command": "docker-compose up build-web",
+      "options": {
+        "cwd": "${workspaceFolder}/../../scripts/"
+      }
+    },
+    {
+      "taskName": "run-api",
+      "identifier": "run-api",
+      "type": "shell",
+      "isBackground": true,
+      "command": "docker-compose up run-api",
+      "options": {
+        "cwd": "${workspaceFolder}/../../scripts/"
+      },
+      "dependsOn": "build-api"
+    },
+    {
+      "taskName": "run-web",
+      "identifier": "run-web",
+      "type": "shell",
+      "isBackground": true,
+      "command": "docker-compose up run-web",
+      "options": {
+        "cwd": "${workspaceFolder}/../../scripts/"
+      },
+      "dependsOn": "build-web",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

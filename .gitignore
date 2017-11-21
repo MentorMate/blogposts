@@ -1,0 +1,10 @@
+launchSettings.json
+.vs/
+bin/
+Bin/
+obj/
+Obj/
+node_modules/
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml

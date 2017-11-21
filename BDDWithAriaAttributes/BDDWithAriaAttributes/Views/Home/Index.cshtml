@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        html, body, app {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h1 role="heading">My application</h1>
+    <div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div>@User.Identity.Name</div>
+        <form method="post" asp-controller="Account" asp-action="Logout">
+            <button type="submit" role="button">Logout</button>
+        </form>
+    }
+    </div>
+</body>
+</html>

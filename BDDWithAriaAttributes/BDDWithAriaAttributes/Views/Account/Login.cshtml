@@ -1,0 +1,33 @@
+﻿@model LoginViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyApp Login</title>
+    <style>
+        html, body, app {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        input, button {
+            margin: 10px 0 0 25px;
+            height: 21px;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 aria-label="Login title">Login</h1>
+    <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@Model.ReturnUrl" method="post" role="form">
+        <input asp-for="Email" placeholder="Email" aria-label="account email" role="textbox" /><br />
+        <input asp-for="Password" placeholder="Password" aria-label="password" role="textbox" /><br />
+        <button type="submit" aria-label="login" role="button">Login</button>
+    </form>
+    <div asp-validation-summary="ModelOnly" aria-label="validation errors" role="region"></div> 
+</body>
+</html>

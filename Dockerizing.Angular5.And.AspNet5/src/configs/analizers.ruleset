@@ -11,7 +11,11 @@
     <Rule Id="CS8032" Action="None" />
   </Rules>
   <Rules AnalyzerId="CodeCracker.CSharp" RuleNamespace="CodeCracker.CSharp">
-    <Rule Id="CC0097" Action="None" />
-    <Rule Id="CC0091" Action="None" />
+    <Rule Id="CC0097" Action="Info" />
+    <Rule Id="CC0091" Action="Info" />
+    <Rule Id="CC0031" Action="Info" />
+  </Rules>
+  <Rules AnalyzerId="WhitespaceAnalyzers" RuleNamespace="WhitespaceAnalyzers">
+    <Rule Id="WS001" Action="Info" />
   </Rules>
 </RuleSet>

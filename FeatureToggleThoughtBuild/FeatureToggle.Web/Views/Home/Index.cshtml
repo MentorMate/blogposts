@@ -1,0 +1,41 @@
+﻿@model Operation
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        html, body, app {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+        }
+
+        input { width: 80px; }
+        button { padding: 5px 10px; margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1 role="heading">My Calculator</h1>
+    <form method="post">
+        <h4>Operands</h4>
+        &nbsp;&nbsp;
+        <input asp-for="@Model.First" />&nbsp;operation&nbsp;
+        <input asp-for="@Model.Second" />&nbsp;=&nbsp;
+        <input asp-for="@Model.Result" value="@Model.Result" readonly />
+        <h4>Operations</h4>
+        &nbsp;&nbsp;
+        
+        @if (ViewBag.IsBasicCalculatorEnabled) { @Html.Partial("Basic"); }
+        @if (ViewBag.IsExtendedCalculatorEnabled) { @Html.Partial("Extended"); }
+    </form>
+    <script>
+        var form = document.querySelector("form");
+        document.querySelectorAll("button[data-action]").forEach(function (button, index, list) {
+            button.addEventListener("click", event => form.action = button.getAttribute("data-action"), false);
+        });
+    </script>
+</body>
+</html>

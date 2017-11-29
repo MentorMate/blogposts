@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="LightInject.Microsoft.DependencyInjection" Version="2.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FeatureToggle.Abstract\FeatureToggle.Abstract.csproj" />
+  </ItemGroup>
+  <Target Name="FullFilesClean" AfterTargets="Clean">
+    <RemoveDir Directories="bin/;obj/" />
+  </Target>
+  <Target Name="CopyFeatureAssembliesFiles" AfterTargets="CopyFilesToOutputDirectory">
+    <ItemGroup>
+      <FeatureAssemlies
+        Include="obj/$(Configuration)/ext/*.*"
+        Exclude="obj/$(Configuration)/ext/*.pdb" />
+      <FeatureAssemlies
+        Include="obj/$(Configuration)/ext/*.pdb"
+        Condition="'$(SkipCopyingSymbolsToOutputDirectory)' != 'true' and '$(CopyOutputSymbolsToOutputDirectory)'=='true'" />
+      <ResolvedFileToPublish Include="@(FeatureAssemlies)">
+        <RelativePath>%(Filename)%(Extension)</RelativePath>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+    <Copy
+        SourceFiles="@(FeatureAssemlies)"
+        DestinationFiles="@(FeatureAssemlies->'$(OutDir)%(Filename)%(Extension)')"
+        OverwriteReadOnlyFiles="$(OverwriteReadOnlyFiles)"
+        Retries="$(CopyRetryCount)"
+        RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)"
+        UseHardlinksIfPossible="$(CreateHardLinksForAdditionalFilesIfPossible)"
+        UseSymboliclinksIfPossible="$(CreateSymbolicLinksForAdditionalFilesIfPossible)"
+        Condition="'$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)' != 'true'">
+      <Output TaskParameter="DestinationFiles" ItemName="FileWrites"/>
+    </Copy>
+  </Target>
+</Project>

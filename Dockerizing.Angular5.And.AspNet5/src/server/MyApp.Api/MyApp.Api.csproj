@@ -10,15 +10,17 @@
     <AdditionalFiles Include="..\..\configs\stylecop.json" />
   </ItemGroup>
   <ItemGroup Label="Code Analyze">
-    <PackageReference Include="CodeCracker.CSharp" Version="1.0.3" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
-    <PackageReference Include="RefactoringEssentials" Version="5.4.0" PrivateAssets="All" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" PrivateAssets="All" />
     <PackageReference Include="System.Runtime.Analyzers" Version="1.1.0" PrivateAssets="All" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.5.0.3766" PrivateAssets="All" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="6.6.0.3969" PrivateAssets="All" />
+    <PackageReference Include="WhitespaceAnalyzers" Version="1.0.5716.21417" PrivateAssets="All" />
+    <PackageReference Include="CodeCracker.CSharp" Version="1.0.3" PrivateAssets="All" />
+    <PackageReference Include="RefactoringEssentials" Version="5.4.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.1.2-alpha" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup Label="NuGet Packages">
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>

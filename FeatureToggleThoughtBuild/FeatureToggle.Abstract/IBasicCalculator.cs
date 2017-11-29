@@ -1,22 +1,17 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="ToDoStatus.cs" company="MentorMate, Inc.">
+// <copyright file="IBasicCalculator.cs" company="MentorMate, Inc.">
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use these files except in compliance with the License.
 // You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0."
 // </copyright>
 // <author>Rosen Kolev</author>
 //-----------------------------------------------------------------------
 
-namespace MyApp.Api.Data.Models
+namespace FeatureToggle.Calculator
 {
-    /// <summary>
-    /// ToDo item status.
-    /// </summary>
-    public enum ToDoStatus
+    public interface IBasicCalculator
     {
-        /// <summary>Open</summary>
-        Open,
+        double Add(double first, double second);
 
-        /// <summary>Done</summary>
-        Done
+        double Sub(double first, double second);
     }
 }

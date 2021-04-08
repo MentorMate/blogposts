@@ -1,4 +1,4 @@
-﻿using ValidationExample.ValidationPattern.Validation;
+using ValidationExample.ValidationPattern.Validation;
 
 namespace ValidationExample.ValidationPattern.Rules
 {

@@ -1,4 +1,4 @@
-﻿namespace ValidationExample.ExtensionsValidation.Results
+namespace ValidationExample.ExtensionsValidation.Results
 {
     /// <summary>The operation status types.</summary>
     public enum ResultCompleteTypes

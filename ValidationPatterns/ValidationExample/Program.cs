@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using ExtensionsUserService = ValidationExample.ExtensionsValidation.Services.UserService;
 using PatternUserService = ValidationExample.ValidationPattern.Services.UserService;
